@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Account</title>
+  <link rel="stylesheet" href="styles/bank.css">
+  <link rel="stylesheet" href="styles/invest.css">
+  <link rel="stylesheet" href="styles/loader.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="icon" href="images/icon Alluregold.svg" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+ 
+
+
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+
+  <script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+  </script>
+  <script type="text/javascript">
+    (function(){
+      emailjs.init({
+        publicKey: "3Xcp--G2SJNoi2jsi",
+      });
+    })();
+  </script>
+</head>
+
+<body>
+
+  <div id="loader"> 
+    <div class="lds-ripple">
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+
+  <div class="market-header">
+    <div>
+      <strong>Gold 1kg</strong>
+      <span>$98,300</span>
+    </div>
+    <div>
+      <strong>Gold 1oz</strong>
+      <span>$3,051</span>
+    </div>
+    <div class="market-percent">
+      <div><i class="fa-solid fa-arrow-up"></i></div>
+      <span>0.14%</span>
+    </div>
+  </div>
+  
+  <header>
+    <div class="header-one">
+      <div class="logo">
+        <a href="index.html">
+          <img src="images/Alluregold logo.svg" alt="" width="160px">
+        </a>
+      </div>
+
+      <!-- <img src="images/bmo-blue.svg" alt="header-logo" width="100px"> -->
+
+      <div style="position: relative;">
+        <i class="fa-solid fa-user" style="font-size: 26px;"  onclick="
+          const profilePopup = document.getElementById('js-pop-up');
+
+          profilePopup.classList.toggle('pop-up')
+          "></i>
+        <div class="profile-pop-up" id="js-pop-up">
+          <p id="js-user-username"></p>
+          <p id="js-user-email"></p>
+          <a href="index.html" class="js-sign-out">SIGN OUT</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="cancel-img-div js-cancel-btn" id="js-cancel-btn">
+    <img src="images/Cancel.png" alt="">
+  </div>
+
+  <div class="send-money-div">
+    <h2 class="invest-member">Invest in our gold mint</h2>
+    <h2 class="bronze-member">Bronze Membership</h2>
+    <h2 class="platinum-member">Platinum Membership</h2>
+    <h2 class="daimond-member">Diamond Membership</h2>
+
+    <div class="send-money">
+      <!-- for all Bronze investment plan transactions  -->
+
+      <!-- for Bronze investment plan input div html code  -->
+      <div class="input-div js-input-div">
+
+        <button class="back-btn js-back-btn">
+          <i class="fa-solid fa-arrow-left-long" style="font-size: 28px; color: rgba(196,138,0,1); cursor: pointer;"></i> 
+        </button>
+
+        <div class="acc-name-div">
+          <label for="name" class="acc-name">Investment Type</label>
+          <input type="text" placeholder="Type here..." class="js-investment-type-input-bronze" readonly>
+
+        </div>
+
+        <div class="acc-number-div">
+          <label for="number" class="acc-number">Full Name</label>
+          <input type="text" placeholder="Type here..." class="number-input">
+        </div>
+
+        <div class="bank-name-div">
+          <label for="name" class="bank-name">Address</label>
+          <input type="text" placeholder="Type here..." id="bank-name-input">
+        </div>
+
+        <div class="remark-div">
+          <label for="remark" class="remark">Phone Number</label>
+          <input type="phone" placeholder="+1234567890" class="remark-input">
+        </div>
+
+        <button class="btn js-local-btn">Proceed</button>
+      </div>
+
+      <!-- <div class="input-div" id="js-amount-div">
+
+        <button class="back-btn amount-back-btn">
+          <i class="fa-solid fa-arrow-left-long" style="font-size: 28px; color: rgba(196,138,0,1); cursor: pointer;"></i> 
+        </button>
+
+        <div class="acc-name-div">
+          <label for="name" class="acc-name">Quanlity (Kg)</label>
+          <input type="text" placeholder="Type here..." required class="amount-input">
+        </div>
+
+        <button class="btn amount-btn">Continue</button>
+      </div> -->
+
+      <!-- for Bronze investment plan confrim details div html code  -->
+      <div class="input-div" id="js-confrim-div">
+
+        <button class="back-btn details-back-btn ">
+          <i class="fa-solid fa-arrow-left-long" style="font-size: 28px; color: rgba(196,138,0,1); cursor: pointer;"></i> 
+        </button>
+
+        <div class="confrim-details-div">
+          <div class="name-div">
+            <p>Transaction Type</p>
+            <strong class="transaction-type" style="color: rgba(196,138,0,1)"></strong>
+          </div>
+
+          <div class="number-div">
+            <p>Full Name</p>
+            <strong class="fullname"></strong>
+          </div>
+          
+          <div class="receiving-bank-div">
+            <p>Address</p>
+            <strong class="address"></strong>
+          </div>
+
+          <div class=" Amount-div">
+            <p>Phone Number</p>
+            <strong class="phone"></strong>
+          </div>
+
+          <button class="btn" id="confirm-details-btn">Confrim details</button>
+        </div>
+      </div>
+
+      <!-- for Bronze investment plan send otp div  -->
+      <!-- <div class="input-div" id="send-otp-div">
+
+        <div class="confrim-details-div">
+          <div class="otpverify">
+            <div class="confirm-otp">
+              OTP has been sent to your email.
+            </div>
+    
+            <div class="otp-inpt-div">
+              <label for="text">Provide OTP</label>
+
+              <input type="text" id="otp-input" placeholder="Type here..." maxlength="6" required>
+            </div>
+            <button class="btn" id="otp-btn" >Invest Now</button>
+          </div>
+        </div>
+
+
+      </div> -->
+
+      <!-- for Bronze investment plan successful div  -->
+      <div class="input-div successful">
+        <div id="successful-div">
+          <div class="successful-div2">
+            <img src="images/checked.png" alt="">
+            <h3>Suceess</h3>
+            <p>Your interest has been received
+              <span class="you-sent"></span>
+            </p>
+          </div>
+  
+          <div class="successful-div3">
+            <p class="paragraph">
+              <span class="deducted" id="deducted"></span> Each application is manually reviewed by a member of our team, to determine if Alluregold is a good  fit for your needs. We will contact you as soon as possible.
+            </p>
+            <button class="btn" id="successful-btn" onclick="window.location.replace('my_account.html')">Back to Dashboard</button>
+          </div>
+        </div>
+
+      </div>
+
+
+
+      <!-- for Platinum Investment Plan -->
+
+      <!-- for Platinum Investment Plan input div html code  -->
+      <div class="input-div" id="international-div">
+
+        <button class="back-btn " id="international-back-btn">
+          <i class="fa-solid fa-arrow-left-long" style="font-size: 28px; color: rgba(196,138,0,1); cursor: pointer;"></i> 
+        </button>
+
+        <div class="acc-name-div">
+          <label for="name" class="acc-name">Investment Type</label>
+          <input type="text" placeholder="Account name" class="js-investment-type-input-platinum">
+        </div>
+
+        <div class="acc-number-div">
+          <label for="fullname" class="Swift-code">Full name</label>
+          <input type="text" placeholder="Type here..." class="js-Swift-code">
+        </div>
+
+        <div class="bank-name-div">
+          <label for="name" class="bank-name">Address</label>
+          <input type="text" placeholder="Type here..." class="js-bank-name">
+        </div>
+
+        <div class="remark-div">
+          <label for="remark" class="remark">Phone Number</label>
+          <input type="text" placeholder="+1234567890" class="js-remark">
+        </div>
+
+        <button class="btn js-inter-pro-btn">Proceed</button>
+      </div>
+
+      <!-- for Platinum Investment Plan confrim details div html code  -->
+      <div class="input-div" id="js-inter-confrim-div">
+
+        <button class="back-btn inter-details-back-btn ">
+          <i class="fa-solid fa-arrow-left-long" style="font-size: 28px; color: rgba(196,138,0,1); cursor: pointer;"></i> 
+        </button>
+
+        <div class="confrim-details-div">
+          <div class="name-div">
+            <p>Investment Type</p>
+            <strong class="js-investment-type" style="color: rgba(196,138,0,1)">John Doe</strong>
+          </div>
+          
+          <div class="number-div">
+            <p>Fullname</p>
+            <strong class="js-SwiftCode"></strong>
+          </div>
+          
+          <div class="receiving-bank-div">
+            <p>Address</p>
+            <strong class="js-bank"></strong>
+          </div>
+
+          <div class=" Amount-div">
+            <p>Phone Number</p>
+            <strong class="js-phone"></strong>
+          </div>
+
+
+          <button class="btn" id="platinum-confrim-btn">Confrim details</button>
+        </div>
+
+      </div>
+
+
+      <!-- for diamond investment Plan transactions -->
+
+      <!-- for diamond investment Plan input div html code  -->
+      <div class="input-div" id="diamond-div">
+        <button class="back-btn " id="diamond-back-btn">
+          <i class="fa-solid fa-arrow-left-long" style="font-size: 28px; color: rgba(196,138,0,1); cursor: pointer;"></i> 
+        </button>
+
+        <div class="acc-name-div">
+          <label for="name" class="acc-name">Investment Type</label>
+          <input type="text" placeholder="Account name" class="js-investment-type-input-diamond">
+        </div>
+
+        <div class="acc-number-div">
+          <label for="number" class="Swift-code">Full name</label>
+          <input type="text" placeholder="Type here..." class="js-dmd-Swift-code">
+        </div>
+
+        <div class="bank-name-div">
+          <label for="name" class="bank-name">Address</label>
+          <input type="text" placeholder="Type here..." class="js-dmd-bank-name">
+        </div>
+
+        <div class="remark-div">
+          <label for="remark" class="remark">Phone Number</label>
+          <input type="text" placeholder="+1234567890" class="js-dmd-remark">
+        </div>
+
+        <button class="btn js-diamond-pro-btn">Proceed</button>
+      </div>
+
+      <!-- for diamond investment Plan confrim details div html code  -->
+      <div class="input-div" id="js-diamond-confrim-div">
+
+        <button class="back-btn diamond-details-back-btn ">
+          <i class="fa-solid fa-arrow-left-long" style="font-size: 28px; color: rgba(196,138,0,1); cursor: pointer;"></i> 
+        </button>
+
+        <div class="confrim-details-div">
+          <div class="name-div">
+            <p>Investment Type</p>
+            <strong class="js-dmd-investment-type" style="color: rgba(196,138,0,1)"></strong>
+          </div>
+
+          <div class="number-div">
+            <p>Full Name</p>
+            <strong class="js-dmd-SwiftCode"></strong>
+          </div>
+          
+          <div class="receiving-bank-div">
+            <p>Address</p>
+            <strong class="js-dmd-bank"></strong>
+          </div>
+
+          <div class="Amount-div">
+            <p>Phone</p>
+            <strong class="js-dmd-phone"></strong>
+          </div>
+          <button class="btn" id="daimond-confrim-btn">Confrim details</button>
+        </div>
+      </div>
+
+      <!-- for Bronze, Platinum and diamond investment pLan  button -->
+      <div class="invest-bronze">
+        <div>
+          <p class="parag1">Bronze Membership</p>
+          <p class="parag2">30% return monthly</p>
+          <p class="parag2">Gold deposit/withdraw</p>
+          <p class="parag2">Gold access</p>
+          <h4 class="price-h4">Less Than $30,000</h4>
+        </div>
+
+        <img src="images/black-arrow2.png" alt="" width="30px" >
+      </div>
+
+      <div class="invest-platinum">
+        <div class="send-inter-conten">
+          <p class="parag1">Platinum Membership</p>
+          <p class="parag2">50% return monthly</p>
+          <p class="parag2">Gold deposit/withdraw</p>
+          <h4 class="price-h4">$50,000</h4>
+        </div>
+        <img src="images/black-arrow2.png" alt="" width="30px">
+      </div>
+
+      <div class="invest-diamond">
+        <div class="send-inter-conten">
+          <p class="parag1">Diamond Membership</p>
+          <p class="parag2">100% return monthly</p>
+          <p class="parag2">Priority on gold access</p>
+          <h4 class="price-h4">$100,000</h4>
+        </div>
+        <img src="images/black-arrow2.png" alt="" width="30px">
+      </div>
+
+    </div>
+  </div>
+
+  <script type="module" src="scripts/invest.js"></script>
+  <!-- <script type="module" src="scripts/bank.js"></script> -->
+
+
+  <script>
+    const loader = document.getElementById('loader');
+    window.addEventListener('load', ()=> {
+      loader.style.display = "none"
+    })
+  </script>
+</body>
+</html>

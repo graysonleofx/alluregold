@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="images/icon Alluregold.svg" type="image/x-icon">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
+
+  <link rel="stylesheet" href="styles/admin.css">
+
+  <title>Admin Dashboard</title>
+</head>
+<body>
+  
+  <main>
+    <div class="admin-heading-container">
+      <h2>Admin Dashboard</h2>
+      <p class="subheading-p">Manage users and transactions in your application.</p>
+      <a id="admin-sign-out" >Sign Out</a>
+    </div>
+    <div>
+    </div>
+
+    <!-- <div id="chart-container">
+      <canvas id="userChart"></canvas>
+    </div> -->
+    <div class="mobile-view-btn-div">
+      <button id="mobile-users-view">Users</button>
+      <button id="mobile-tranc-view">Transactions</button>
+    </div>
+    <div class="container">
+      <div class="users-container">
+
+        <div class="users-head">
+          <div class="users-div">
+            <i class="fa-regular fa-user" style="color: rgba(196,138,0,1); cursor: pointer;"></i>
+            <p>Users</p>
+            <!-- <span id="total-user">3</span> -->
+          </div>
+          <button class="add-btn">  
+            <i class="fa-light fa-plus" style="font-size: 16px;"></i>  
+            <p>Add Users</p>  
+          </button> 
+          
+        </div>
+
+        <!-- <div class="search-container">
+          <input type="search" placeholder="Search user by email...">
+          <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 12px;"></i>
+        </div> -->
+
+        <table class="users-table">
+          <thead>
+            <tr>
+              <th>Users</th>
+              <th class="created">Created</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+
+          <tbody id="user-list">
+            <!-- <tr>
+              <td>
+                <div class="user-id">
+                  <i class="fa-regular fa-user" style="color: rgba(196,138,0,1);"></i>
+                  <div>
+                    <h4>user1@gmail.com</h4>
+                    <p>ID: 1</p>
+                  </div>
+                </div>
+              </td>
+  
+              <td class="created">
+                <p>Jan 15, 2023</p>
+              </td>
+  
+              <td>
+                <div class="active-div">
+                  <div class="active-circle"></div>
+                  <p>Online</p>
+                </div>
+              </td>
+  
+            </tr>
+  
+            <tr>
+              <td>
+                <div class="user-id">
+                  <i class="fa-regular fa-user" style="color: rgba(196,138,0,1);"></i>
+                  <div>
+                    <h4>user2@gmail.com</h4>
+                    <p>ID: 2</p>
+                  </div>
+                </div>
+              </td>
+  
+              <td class="created">
+                <p>Dec 25, 2024</p>
+              </td>
+  
+              <td>
+                <div class="active-div">
+                  <div class="not-active-circle"></div>
+                  <p>5 days ago</p>
+                </div>
+              </td>
+  
+            </tr>
+  
+            <tr>
+              <td>
+                <div class="user-id">
+                  <i class="fa-regular fa-user" style="color: rgba(196,138,0,1);"></i>
+                  <div>
+                    <h4>user3@gmail.com</h4>
+                    <p>ID: 3</p>
+                  </div>
+                </div>
+              </td>
+  
+              <td class="created">
+                <p>Feb 15, 2024</p>
+              </td>
+  
+              <td>
+                <div class="active-div">
+                  <div class="offline-circle"></div>
+                  <p>Offline</p>
+                </div>
+              </td>
+  
+            </tr> -->
+          </tbody>
+
+        </table>
+      </div>
+
+
+      <div class="transaction-container">
+
+        <div class="transaction-head">
+          <div class="transaction-div">
+            <i class="fa-regular fa-credit-card" style="color: rgba(196,138,0,1);"></i>
+            <p>Investments</p>
+            <!-- <span>4</span> -->
+          </div>
+            <button class="transaction-btn">
+              <i class="fa-light fa-plus" style="font-size: 16px;"></i>
+              <p>Add Investment</p>
+            </button>
+        </div>
+
+        <!-- <div class="search-container">
+          <input type="search" placeholder="Search transactions...">
+          <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 12px;"></i>
+        </div> -->
+
+        <table class="users-table"  id="transactions-list">
+          <thead>
+            <tr>
+              <th>Investments</th>
+              <th class="created">Type</th>
+              <th class="created">Users</th>
+              <th>Date</th>
+              <th>Delete </th>
+            </tr>
+          </thead>
+
+
+          <tbody id="transaction-body">
+          </tbody>
+
+        </table>
+      </div>
+
+    </div>
+
+
+    <!-- hidden overlays  -->
+    <div class="overlay" id="add-user-overlay" hidden style="display: none;">
+      <div class="add-user-container"  style="pointer-events: all;" >
+        <div class="add-header">
+          <h3>Add New User</h3>
+          <i class="fa-solid fa-xmark" style="cursor: pointer;  pointer-events: all;" id="js-cancle-btn"></i>
+        </div>
+
+        <form id="add-user-form">
+          <div class="email-container">
+            <label> Full Name</label>
+            <input type="text" placeholder="John Deo" id="js-fullname">
+          </div>
+
+          <div class="email-container">
+            <label> Username</label>
+            <input type="text" placeholder="johndeo12" id="js-username">
+          </div>
+
+          <div class="email-container">
+            <label> Email</label>
+            <input type="email" placeholder="user@gmail.com" id="js-email">
+          </div>
+
+          <div class="password-container">
+            <label> Password</label>
+            <input type="password" placeholder="********" id="js-password">
+            <p>Password must be at least 6 characters long.</p>
+          </div>
+
+          <div class="btn-contianer">            
+            <button type="submit">Add User</button>
+            <button id="cancel-btn">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div> 
+
+    <div class="overlay" id="add-transaction-overlay" hidden style="display: none;">
+      <div class="add-transaction-container" style="pointer-events: all;">
+        <div class="add-header">
+          <h3>Add New Invesments</h3>
+          <i class="fa-solid fa-xmark" style="cursor: pointer; pointer-events: all;" id="js-cancle-trans-btn"></i>
+        </div>
+
+        <form id="add-transaction-form">
+          <div class="user-container">
+            <label> User</label>
+            <select id="user-select" required>
+              <option value="">-- Select User --</option>
+            </select>
+          </div>
+
+          <div class="amount-container">
+            <label> Quality (kg)</label>
+            <input type="number" placeholder="0.00" id="num-input">
+          </div>
+          
+          <div class="amount-container">
+            <label> increment</label>
+            <input type="number" placeholder="0.00" id="increment-input">
+          </div>
+
+          <div class="remark-container">
+            <label> Investment Type</label>
+            <select id="transaction-type" required>
+              <option value="Bronze Membership">Bronze Membership</option>
+              <option value="Platinum Membership">Platinum Membership
+              </option>
+              <option value="Diamond Membership">Diamond Membership</option>
+            </select>
+          </div>
+
+          <div class="date-container">
+            <label> Date</label>
+            <input type="date" id="date-input">
+          </div>
+
+          <div class="btn-contianer">
+            <button type="submit">Add Transaction</button>
+            <button id="trans-cancel-btn">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="overlay" id="update-user-overlay" hidden>
+      <div class="add-user-container" style="pointer-events: all;">
+        <div class="add-header">
+          <h3>Edit User</h3>
+          <i class="fa-solid fa-xmark" style="cursor: pointer;  pointer-events: all;" id="js-cancle-update-btn"></i>
+        </div>
+
+        <form id="update-user-form" style="max-height: 400px; height: 100vh; overflow: auto;">
+          <div class="password-container">
+            <label> Balance</label>
+            <input type="number" placeholder="100kg" id="js-user-balance">
+            <p></p>
+          </div>
+
+          <div class="password-container">
+            <label>Kg to USD</label>
+            <input type="number" placeholder="$100" id="js-user-balance-usd">
+            <p id="bal-in-usd"></p>
+          </div>
+
+          <div class="password-container">
+            <label>Increasment In %</label>
+            <input type="number" placeholder="$100" id="js-user-balance-increasement">
+            <p id="bal-increasement"></p>
+          </div>
+
+          <div class="remark-container">
+            <label> Investment Type</label>
+            <select id="investment-type" required>
+              <option value="Bronze Membership">Bronze Membership</option>
+              <option value="Platinum Membership">Platinum Membership
+              </option>
+              <option value="Diamond Membership">Diamond Membership</option>              
+            </select>
+            <p id="invest-crrent-type">Current Investment Type: </p>
+          </div>
+
+          <div class="email-container">
+            <label> Email Address</label>
+            <input type="email" placeholder="user@gmail.com" id="js-user-email">
+          </div>
+
+          <div class="btn-contianer" style="justify-content: space-between; flex-direction: row;">
+            <button style="background-color: red; color: white;" id="delete-btn">
+              <i class="fa-solid fa-trash-can"></i>
+              Delete User
+            </button>
+
+            <div style="display:flex; justify-content: space-between; flex-direction: row-reverse; column-gap: 10px;">
+              <button type="submit">Update User</button>
+              <button id="update-user-cancel-btn">Cancel</button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div> 
+
+    <div class="overlay" id="delete-user-overlay" hidden style="display: none; height: 100vh;">
+      <div class="add-user-container" style="height: 250px; margin: 100px 0; pointer-events: all;">
+        <div class="add-header" id="hd-fr-delete">
+          <h3>Are you absolutely sure ?</h3>
+        </div>
+
+        <p style="font-family: 'Roboto', sans-serif; font-size: 16px; font-style: normal; font-weight: 400;">This action can not be undone. This will permanently delete user and associated data.</p>
+
+        <div class="btn-contianer" style="justify-content: flex-end; flex-direction: row; margin-top: 20px;">
+          <div style="display:flex; justify-content: space-between; flex-direction: row-reverse; column-gap: 10px;">
+            <button style="background-color: red; color: white;" id="js-delete-user">
+              <i class="fa-solid fa-trash-can"></i>
+              Delete User
+            </button>
+            <button id="delete-user-cancel-btn">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div> 
+  </main>
+
+  <script type="module" src="scripts/admin.js"></script>
+  <script type="module" src="scripts/firebase.js"></script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles/contact.css">
+  <link rel="stylesheet" href="styles/home.css">
+  <link rel="stylesheet" href="styles/loader.css">
+  <link rel="icon" href="images/icon Alluregold.svg" type="image/x-icon">
+  <title>Get Support - Alluregold</title>
+  <script type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+  </script>
+  <script type="text/javascript">
+    (function(){
+      emailjs.init({
+        publicKey: "3Xcp--G2SJNoi2jsi",
+      });
+    })();
+  </script>
+</head>
+
+<body>
+  <div id="loader"> 
+    <div class="lds-ripple">
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  
+  <header>
+    <div class="heading">
+      <a href="index.html">
+        <img src="images/Alluregold logo.svg" alt="brand" class="brand">
+      </a>
+      <ul id="navLinks">
+        <li><a href="index.html#Feature">Feature</a></li>
+        <li><a href="index.html#About">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+    <a id="sign-in">Sign In</a>
+
+   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+      <img src="images/menu.png" width="50px">
+    </a>    
+  </header>
+
+  <main>
+    <div class="contact-container">
+      <div class="brand-div">
+        <img src="images/cnt-logo.svg" alt="" class="logo">
+      </div>
+      <div class="contact-info">
+        <h3>Get Support</h3>
+        <p class="contact-mail">
+          Typically replies in 24 hours
+          <br>
+          contact@alluregold.online
+        </p>
+
+        <p class="contact-number">
+          +1 920 837 3083
+        </p>
+      </div>
+
+      <div class="contact-form" >
+        <form action="#" id="contact-form">
+          
+          <div class="textarea-input-div">
+            <textarea placeholder="Message" id="message" required></textarea>
+            <span id="message-error" class="error-message"></span>
+          </div>
+        </form>
+
+        <button id="js-send-msg">Send Message</button>
+      </div>
+    </div>
+  </main>
+
+  <script src="scripts/support.js"></script>
+  <script type="module" src="scripts/index.js" ></script>
+
+
+  <script>
+    const loader = document.getElementById('loader');
+    window.addEventListener('load', ()=> {
+      loader.style.display = "none"
+    });
+
+    function myFunction() {
+        let x = document.getElementById("navLinks");
+        
+        if (x.style.display === "block") {
+          x.style.display = "none";
+        } else {
+          x.style.display = "block";
+      }
+    }
+  </script>
+</body>
+</html>

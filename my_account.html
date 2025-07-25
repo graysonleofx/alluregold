@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="images/icon Alluregold.svg" type="image/x-icon">
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
+
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
+
+  <link rel="stylesheet" href="styles/bank.css">
+  <!-- <link rel="stylesheet" href="styles/send-money.css"> -->
+  <title>My Account - Alluregold</title>
+</head>
+<body>
+  <div class="market-header">
+    <div>
+      <strong>Gold 1kg</strong>
+      <span>$103,252</span>
+    </div>
+    <div>
+      <strong>Gold 1oz</strong>
+      <span>$3,051</span>
+    </div>
+    <div class="market-percent">
+      <div><i class="fa-solid fa-arrow-up"></i></div>
+      <span>0.14%</span>
+    </div>
+  </div>
+
+  <header>
+    <div class="header-one">
+      <div class="logo">
+        <a href="index.html">
+          <img src="images/Alluregold logo.svg" alt="" width="160px">
+        </a>
+      </div>
+
+      <!-- <img src="images/bmo-blue.svg" alt="header-logo" width="100px"> -->
+
+      <div style="position: relative;">
+        <i class="fa-solid fa-user" style="font-size: 26px;"  onclick="
+          const profilePopup = document.getElementById('js-pop-up')
+
+          profilePopup.classList.toggle('pop-up')
+          "></i>
+        <div class="profile-pop-up" id="js-pop-up">
+          <p id="js-user-username"></p>
+          <p id="js-user-email"></p>
+          <a href="index.html" class="js-sign-out">SIGN OUT</a>
+        </div>
+      </div>
+    </div>
+
+
+    
+
+    <div class="header-div">
+
+      <div id="btn-div">
+        <a href="invest.html" class="invest-btn"> 
+          <!-- id="sendmoneybtn" -->
+          <div class="add-card">
+            <p>Invest</p>
+    
+            <i class="fa-solid fa-money-bill-trend-up"></i>
+          </div>
+        </a>
+        
+        <a href="wihthdraw.html" class="invest-btn"> 
+          <!-- id="sendmoneybtn" -->
+          <div class="add-card">
+            <p>Withdraw</p>
+    
+            <i class="fa-solid fa-minus"></i>
+          </div>
+        </a>
+      </div>
+
+      <div class="header-two js-header-two">
+        <!-- <div class="account-balance"> -->
+          <div class="account-balance">
+            <h2 class="username" id="js-user-fullname">
+            </h2>
+            <span style="color: rgba(250, 181, 21, 1);" id="investment-plan"></span>
+          </div>
+
+          <div id="bal-div">
+            <span>Total Balance</span>
+            <div class="checking-div">
+              <p class="total-balance" id="js-checking"><p>
+
+              <div>
+                <strong id="js-balance-in-usd" class="username" style="color: rgba(206,204,204,1);" ><strong>
+              </div>
+                
+              <span>Payouts Due<span>
+            </div>
+            <blockquote style="font-size: 14px; color: green;" id="js-increasement"></blockquote>
+          </div>
+        <!-- </div> -->
+      </div>
+
+
+    </div>
+    
+  </header>
+  
+  <main class="js-main">
+    <!-- <div class="bank-card">
+      <img src="images/visa.svg" alt="" class="visa" width="100px">
+
+      <div class="card-number">
+        <p>**** **** **** 8686</p>
+        <img src="images/Chip_Card (1).svg" alt="Chip_Card img" width="46px">
+      </div>
+
+      <div class="card-owners-name">
+        <p id="name"></p>
+
+        <p>12/24</p>
+      </div>
+
+      <img src="//s3.amazonaws.com/appforest_uf/f1616636353989x171041585587394780/card-overlay-white-2.svg" alt="" class="bg">
+      
+    </div> -->
+
+    <h1 class="transaction ">Invesments</h1>
+    <div id="js-transaction" class="transactionsList">
+  
+      <!-- <div class="transactions-lists ">
+  
+      </div> -->
+  
+      <!-- <div class="transactions-lists">
+        <div class="product-item">
+          <div>Fox Christine</div>
+          <p>Debt</p>
+        </div>
+  
+        <div class="incoming-amount-div">
+          <div>+$6,500</div>
+        </div>
+      </div>
+  
+      <div class="transactions-lists">
+        <div class="product-item">
+          <div>Trem LLC</div>
+          <p>Freight payment</p>
+        </div>
+  
+        <div class="incoming-amount-div">
+          <div>+$17,550</div>
+        </div>
+      </div> -->
+    
+    </div>
+  </main>
+
+
+  <script type="module" src="scripts/bank.js"></script>
+  <script type="module" src="scripts/transaction.js"></script>
+</body>
+</html>
