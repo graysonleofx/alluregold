@@ -1,0 +1,439 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+:root{
+  --header-one-background:rgba(0, 117, 190, 1);
+  --header-one-link-color:white;
+  --header-link-font-family:'heebo', sans-serif;
+  --header-link-font-size:14px;
+  --header-link-font-weight: 500;
+
+  --header-two-background: rgb(34, 31, 2);
+  --header-two-span-color: rgba(236, 236, 236, 0.8);
+  --header-two-color: rgba(236, 236, 236 ,1);
+  --header-two-span-font-weight: 400;
+  --header-two-paragraph-font-size: 18px;
+
+  --main-background-color: rgba(245, 246, 247, 1);
+
+  --bank-card-background: rgb(34, 31, 2);
+  --bank-card-number-paragraph-font-size: 14px;
+  --bank-card-number-paragraph-font-weight: 400;
+  --bank-card-number-paragraph-color: #fff;
+
+  --bank-card-name-paragraph-font-size: 16px;
+  --bank-card-name-paragraph-font-weight: 500;
+  
+  --transactions-list-background-color: white;
+  --transactions-list-div-font-size: 16px;
+  --transactions-list-div-font-weight: 600;
+  --transactions-list-div-color: rgba(87, 85, 85, 1);
+  
+  --transactions-list-paragraph-font-size: 12px;
+  --transactions-list-paragraph-font-weight: 400;
+  --transactions-list-paragraph-color:rgba(124, 128, 128, 1);
+  --transactions-list-amount-div-bg:rgba(255, 189, 189, 1);
+  --transactions-list-amount-div-color:rgba(165, 8, 8, 1);
+  --transactions-list-amount-div-font-size:14px;
+  --transactions-list-amount-div-font-weight: 600;
+  --transactions-list-income-amount-div-color:rgb(0, 107, 27);
+  --transactions-list-income-amount-div-bg-color:rgb(189, 255, 206);
+  
+  --transaction-color: rgba(87, 85, 85, 1);
+  --transaction-font-size: 22px;
+  --transaction-font-weight: 600;
+  --font: "Roboto", sans-serif;
+}
+
+body{
+  padding-top: 70px;
+  padding-bottom: 100px;
+  background-color: rgba(255,252,244,1);
+}
+a{
+  text-decoration: none;
+}
+.market-header{
+  background-color: black;
+  color: white;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 20px;
+}
+.market-header div strong {
+  font-size: 14px;
+  font-family: var(--font);
+  color: #ececec;
+  font-weight: 600;
+}
+.market-header div span {
+  font-size: 14px;
+  font-family: var(--font);
+  color: #ececec;
+}
+.market-header .market-percent {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+.market-header div i,
+.market-percent span {
+  color: #02e442 !important;
+}
+.header-one{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(238, 238, 238);
+  height: 76px;
+  padding: 0 180px;
+  position: fixed;
+  top: 30px;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  border: 1px solid rgb(204, 202, 202);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.header-one .logo{
+  font-size: 26px;
+  letter-spacing: 4px;
+  font-family: var(--font);
+  color:rgba(10, 10, 10, 1);
+  font-weight: bold;
+}
+.profile-pop-up{
+  background-color: white;
+  padding: 12px 20px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  position: absolute;
+  right: 0;
+  top: 50px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  display: none;
+  width: 100px;
+}
+.pop-up{
+  display: flex;
+}
+.profile-pop-up p{
+  font-family: var(--font);
+  font-size: 16px;
+  font-style: normal;
+  font-family: 400;
+}
+.header-one a{
+  text-decoration: none;
+  color: rgba(196,138,0,1);
+  font-family: var(--header-link-font-family);
+  font-weight: var(--header-link-font-weight);
+  font-size: var(--header-link-font-size);
+  transition: all 300ms ease-in ;
+}
+.header-one a:hover{
+  opacity: 0.5;
+}
+
+.header-div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: max-content;
+  padding: 24px;
+  margin: 120px 180px 0 180px ;
+  border-radius: 5px;
+}
+#btn-div{
+  display: flex;
+  justify-content: flex-end;
+  column-gap: 10px;
+  align-items: center;
+  height: max-content;
+  margin: 0 180px 0 220px ;
+  padding: 18px;
+  width: 100%;
+}
+.header-two {
+  display: flex;
+  /* align-items: center; */
+  height: max-content;
+  background-color: var(--header-two-background);
+  padding: 24px;
+  /* margin: 20px 180px 0 180px ; */
+  border-radius: 5px;
+  height: 100px;
+  width: 100%;
+}
+.account-balance{
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+#bal-div{
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+.username{
+  font-family: var(--font);
+  font-style: normal;
+  font-size: 22px;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 10px;
+  /* width: 100%; */
+}
+.checking-div,
+.saving-div{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 5px;
+}
+.account-balance span,
+#bal-div span{
+  color: var(--header-two-span-color);
+  font-family: var(--font);
+  font-size: var(--header-link-font-size);
+  font-weight: 600;
+}
+.account-balance p,
+#bal-div p{
+  color: var(--header-two-color);
+  font-family: var(--font);
+  font-size: 22px;
+  font-weight: 600;
+  color: rgba(250, 181, 21, 1);
+}
+.invest-btn{
+  border: 1px solid rgba(250, 181, 21, 1);
+  background-color:rgba(250, 181, 21, 1) ;
+  padding: 12px 20px 12px 24px;
+  color: white;
+  border-radius: 5px;
+}
+.add-card {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  text-decoration: none;
+}
+.add-card p{
+  color: white;
+  font-family: var(--header-link-font-family);
+  font-size: var(--header-link-font-size);
+  font-weight: var(--header-two-span-font-weight);
+}
+/* .add-card button{
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+} */
+
+/* main content of this web application  */
+main{
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255,252,244,1);
+  padding: 100px 64px;
+}
+.bank-card{
+  background-color: var(--bank-card-background);
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  color: var(--header-one-link-color);
+  width: 380px;
+  height: 160px;
+  margin: 20px 0px 40px;
+  padding: 24px;
+  position: relative;
+  row-gap: 20px;
+  padding-top: 35px;
+}
+.bank-card .card-number,
+.bank-card .card-owners-name{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.bank-card .bg{
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.bank-card .card-number p{
+  font-family: var(--header-link-font-family);
+  font-size: var(--bank-card-number-paragraph-font-size);
+  font-weight: var(--bank-card-number-paragraph-font-weight);
+  color: var(--bank-card-number-paragraph-color);
+}
+.bank-card .card-owners-name p{
+  font-size: var(--bank-card-name-paragraph-font-size);
+  font-family: var(--header-link-font-family);
+  font-weight: var(--bank-card-name-paragraph-font-weight);
+}
+.transaction{
+  color: var(--transaction-color);
+  font-family: var(--header-link-font-family);
+  font-size: var(--transaction-font-size);
+  font-weight: var(--transaction-font-weight);
+  margin-bottom: 14px;
+  margin-left: 120px;
+  margin-right: 120px;
+}
+.transactionList{
+  height: 300px;
+  overflow: auto;
+} 
+.transactions-lists{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--transactions-list-background-color);
+  box-shadow: rgba(170, 170, 170, 0.15) 2px 2px 4px 0px;
+  padding: 24px;
+  border-radius: 5px;
+  height: max-content;
+  margin: 10px 120px;
+}
+.product-item div{
+  font-family: var(--header-link-font-family);
+  font-size: var(--transactions-list-div-font-size);
+  font-weight: var(--transactions-list-div-font-weight);
+  color: var(--transactions-list-div-color);
+  margin-bottom: 3px;
+}
+.product-item p{
+  font-family: var(--header-link-font-family);
+  font-size: var(--transactions-list-paragraph-font-size);
+  font-weight: var(--transactions-list-paragraph-font-weight);
+  color: var(--transactions-list-paragraph-color);
+}
+.amount-div{
+  background-color: var(--transactions-list-amount-div-bg);
+  padding: 5px 24px;
+  width: max-content;
+  height: max-content;
+  border-radius: 50px;
+}
+
+.incoming-amount-div{
+  background-color:var(--transactions-list-income-amount-div-bg-color) ;
+  padding: 5px 24px;
+  width: max-content;
+  height: max-content;
+  border-radius: 50px;
+}
+.incoming-amount-div div{
+  color: var(--transactions-list-income-amount-div-color);
+  font-family: var(--header-link-font-family);
+  font-weight: var(--transactions-list-amount-div-font-weight);
+  font-size: var(--transactions-list-amount-div-font-size);
+}
+.amount-div div{
+  color: var(--transactions-list-amount-div-color);
+  font-family: var(--header-link-font-family);
+  font-weight: var(--transactions-list-amount-div-font-weight);
+  font-size: var(--transactions-list-amount-div-font-size);
+}
+
+@media only screen and (max-width: 768px){
+  .header-one {
+    padding: 0 60px;
+  }
+
+  .header-div {
+    align-items: center;
+    padding: 24px;
+    margin: 120px 60px 0 60px;
+    border-radius: 5px;
+  }
+
+  .transaction {
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+
+  .transactions-lists {
+    margin: 10px 40px;
+  }
+}
+
+@media only screen  and (max-width: 600px){
+  html,
+  body{
+    width:100%;
+    overflow-x:hidden;
+  }
+  .header-one {
+    padding: 0 10px;
+  }
+  .header-two {
+    padding: 20px;
+    margin: 0 10px;
+    height: 180px;
+    flex-direction: column;
+    row-gap: 50px;
+  }
+  .header-div {
+    align-items: center;
+    padding: 24px;
+    margin: 80px 10px 0 10px;
+    border-radius: 5px;
+  }
+  .account-balance {
+    justify-content: flex-start;
+  }
+  #bal-div {
+    justify-content: flex-end;
+  }
+  .account-balance p {
+    font-size: 16px;
+  }
+  .bank-card {
+    width: 94%;
+    padding: 20px;
+  }
+  main {
+    padding: 50px 20px;
+  }
+  .transactions-lists,
+  .transaction {
+    flex-direction: column;
+    row-gap: 20px;
+    align-items: flex-start;
+    margin: 10px -10px;
+  }
+
+  .incoming-amount-div {
+    background-color: var(--transactions-list-income-amount-div-bg-color);
+    padding: 5px 24px;
+    width: max-content;
+    height: max-content;
+    border-radius: 50px;
+}
+
+  /* .product-item{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  } */
+}
